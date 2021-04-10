@@ -2,7 +2,7 @@ package ru.job4j.oop;
 
 public class Battery {
 
-    private int load; // создали поле заряд батареи
+    private int load;
 
     public Battery(int accum) {  // конструктор Батарея входящий параметр заряда
         this.load = accum;        // обратились к полю , передали параметр заряда в поле
