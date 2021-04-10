@@ -29,6 +29,7 @@ public class Error {
         Error third = new Error(false, 2, "Dont Work");
         first.output();
         second.output();
+        third.output();
 
 
     }

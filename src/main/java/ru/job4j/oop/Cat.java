@@ -2,32 +2,32 @@ package ru.job4j.oop;
 
 public class Cat {
 
-    private String food;
-    private String name;
+    private String food; //поле обьекта
+    private String name;  //поле обьекта
 
     public void giveNick(String nick) {
-        this.name = nick;
+        this.name = nick;  // обращаемся к полю, присваиваем ему значение входящего параметра метода
     }
 
     public void eat(String meat) {
-        this.food = meat;
+        this.food = meat;   // обращаемся к полю, присваиваем ему значение входящего параметра метода
     }
 
-    public void show() {
-        System.out.println(this.food);
-        System.out.println(this.name);
+    public void show() {   // метод выводит результат обращения к полям, которые мы проинициализировали
+        System.out.println(this.food); // выводим на экран обращение к полю
+        System.out.println(this.name); // выводим на экран обращение к полю
     }
 
     public static void main(String[] args) {
         System.out.println("There are gav's food.");
-        Cat gav = new Cat();
-        gav.eat("kotleta");
-        gav.giveNick("gav");
-        gav.show();
+        Cat gav = new Cat();  // создаем обьект из класса
+        gav.eat("kotleta"); // обращаемся к обьекту с вызовом метода и входящим параметром
+        gav.giveNick("gav"); // обращаемся к обьекту с вызовом метода и входящим параметром
+        gav.show();  // обращение к обьекту с вызовом метода
         System.out.println("There are black's food.");
-        Cat black = new Cat();
-        black.eat("fish");
-        black.giveNick("black");
-        black.show();
+        Cat black = new Cat(); // создаем обьект из класса
+        black.eat("fish"); // обращаемся к обьекту с вызовом метода и входящим параметром
+        black.giveNick("black"); // обращаемся к обьекту с вызовом метода и входящим параметром
+        black.show(); // обращение к обьекту с вызовом метода
     }
 }
