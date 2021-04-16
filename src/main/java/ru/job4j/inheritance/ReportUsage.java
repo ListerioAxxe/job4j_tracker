@@ -9,7 +9,7 @@ public class ReportUsage {
         System.out.println();
 
         HtmlReport htmlReport = new HtmlReport();
-        String text = report.generate("sdh", "sdhb");
+        String text = htmlReport.generate("sdh", "sdhb");
         System.out.println(text);
 
     }
