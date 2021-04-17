@@ -34,7 +34,7 @@ public class Library {
 
         for (int s = 0; s < libr.length; s++) {
             Book resl = libr[s];
-            if (resl.getName().equals("Clean code")) {
+            if ("Clean code".equals(resl.getName())) {
                 System.out.println(resl.getName() + " " + resl.getCount());
             }
         }
