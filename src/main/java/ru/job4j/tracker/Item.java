@@ -7,11 +7,9 @@ import java.time.format.DateTimeFormatter;
 public class Item {
     private int id;
     private String name;
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
 
-    LocalDateTime currentDateTime = LocalDateTime.now();
 
-    public LocalDateTime getCreated() {return getCreated(); }
     public int getId() {
         return id;
     }
@@ -24,6 +22,7 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+    public LocalDateTime getCreated() {return this.created; }
 
 
     public Item() {
@@ -38,10 +37,13 @@ public class Item {
         this.id = id;
     }
 
-    public class StartUI {
-        Item item = new Item();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String currentDateTime = item.getCreated().format(formatter);
-    }
+}
 
+    class StartUI {
+    public static void main(String[] args) {
+      Item item = new Item();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
+      String currentDateTime = item.getCreated().format(formatter);
+        System.out.println(currentDateTime);
+    }
 }
