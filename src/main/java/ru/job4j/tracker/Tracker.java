@@ -51,7 +51,6 @@ public class Tracker {
             item.setId(id);
             items[idIndex] = item;
             return true;
-
         }
         return false;
     }
@@ -63,7 +62,6 @@ public class Tracker {
                 items[size-1] = null;
                 size--;
                 return true;
-
             }
         return false;
     }
