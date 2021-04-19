@@ -1,5 +1,7 @@
 package ru.job4j.encapsulation;
 
+import ru.job4j.tracker.Item;
+
 public class Config {
     private String name;
     private int position;
@@ -21,3 +23,5 @@ public class Config {
         return key;
     }
 }
+
+
