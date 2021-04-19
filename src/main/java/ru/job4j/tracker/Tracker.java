@@ -14,7 +14,8 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-         return Arrays.copyOf(items, size);
+        return Arrays.copyOf(items, size);
+
     }
 
     public Item[] findByName(String key) {
@@ -25,6 +26,7 @@ public class Tracker {
                 findAllNames[rsl++] = items[i];
             }
         }
+
         findAllNames = Arrays.copyOf(findAllNames, rsl);
         return findAllNames;
     }
