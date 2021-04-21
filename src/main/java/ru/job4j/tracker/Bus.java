@@ -1,16 +1,20 @@
 package ru.job4j.tracker;
 
 public class Bus implements Transport {
+
+    private int passengers;
+
     @Override
     public void go() {
         int gas = 5;
         int distance = 100;
         int needMoney = gas * distance;
+        System.out.println("Необходимая сумма для поездки:  " + needMoney);
     }
 
     @Override
     public void passengers(int count) {
-        int passengr = count;
+        this.passengers = count;
     }
 
     @Override
