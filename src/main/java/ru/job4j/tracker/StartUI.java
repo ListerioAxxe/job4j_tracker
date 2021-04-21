@@ -28,7 +28,6 @@ public class StartUI {
                   System.out.println("Enter name");
                   String name = scanner.nextLine();
                   Item first = new Item(name);
-                  tracker.replace(id, first);
                   if (tracker.replace(id, first)) {
                       System.out.println("Successful");
                   } else {
@@ -37,7 +36,6 @@ public class StartUI {
               }
               else if (select == 3) {
                   int id = Integer.valueOf(scanner.nextLine());
-                  tracker.delete(id);
                   if (tracker.delete(id)) {
                       System.out.println("Successful");
                   } else {
@@ -58,7 +56,7 @@ public class StartUI {
                   String name = scanner.nextLine();
                   System.out.println("Введите имя заявки для поиска");
                   Item[] rsl = tracker.findByName(name);
-                    if (rsl.length > 1) {
+                    if (rsl.length > 0) {
                         System.out.println(Arrays.toString(rsl));
                     }
                     else {
