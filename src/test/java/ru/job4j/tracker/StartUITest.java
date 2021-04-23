@@ -40,11 +40,10 @@ public class StartUITest extends TestCase {
         Tracker tracker = new Tracker();
         Item item = new Item("first item");
         tracker.add(item);
-        String[] answers ={String.valueOf(item.getId()), "deleted item"};
+        String[] answers = {String.valueOf(item.getId())};
         StartUI.deleteItem(new StubInput(answers), tracker);
         Item deleted = tracker.findById(item.getId());
-        Item exp = null;
-        Assert.assertThat(deleted, is(exp));
+        Assert.assertNull(null, deleted);
 
     }
 }
