@@ -6,7 +6,6 @@ public class StartUI {
     public StartUI(Output out) {
         this.out = out;
     }
-
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
@@ -16,7 +15,6 @@ public class StartUI {
             run = action.execute(input, tracker);
         }
     }
-
     private void showMenu(UserAction[] actions) {
         out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
