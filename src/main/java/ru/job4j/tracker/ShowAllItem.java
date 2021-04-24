@@ -17,7 +17,9 @@ public class ShowAllItem implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         Item[] find = tracker.findAll();
-        out.println(Arrays.toString(find));
+        for (int i = 0; i < find.length; i++) {
+         out.println(find[i]);
+        }
         return true;
     }
 }
