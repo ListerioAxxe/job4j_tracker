@@ -12,8 +12,7 @@ public class FindById implements UserAction {
         Item second = tracker.findById(id);
         if (second != null) {
             System.out.println(second);
-        }
-        else {
+        } else {
             System.out.println("Заявка с таким ID не найдена");
         }
         return true;

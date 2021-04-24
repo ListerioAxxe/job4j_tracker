@@ -14,8 +14,7 @@ public class FindByName implements  UserAction{
         Item[] rsl = tracker.findByName(name);
         if (rsl.length > 0) {
             System.out.println(Arrays.toString(rsl));
-        }
-        else {
+        } else {
             System.out.println("Заявка с таким именем не найдены");
         }
         return true;
