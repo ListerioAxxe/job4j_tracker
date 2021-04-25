@@ -19,8 +19,8 @@ public class FindByName implements  UserAction{
         String name =  input.askStr("Enter name");
         Item[] rsl = tracker.findByName(name);
         if (rsl.length > 0) {
-            for(int i = 0; i< rsl.length; i++) {
-                out.println(rsl[i]);
+            for (Item item : rsl) {
+                out.println(item);
             }
         } else {
             out.println("Заявка с таким именем не найдены");
