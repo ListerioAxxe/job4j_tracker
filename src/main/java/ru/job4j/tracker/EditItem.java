@@ -15,7 +15,7 @@ public class EditItem implements  UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        int id = Integer.valueOf( input.askStr("Enter ID"));
+        int id = input.askInt("Enter ID");
         String name =  input.askStr("Enter name ");
         Item first = new Item(name);
         if (tracker.replace(id, first)) {
