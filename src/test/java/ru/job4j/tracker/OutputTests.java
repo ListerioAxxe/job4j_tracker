@@ -28,20 +28,22 @@ public class OutputTests {
         String sep = System.lineSeparator();
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"1", "2"});
+        Input in = new StubInput(new String[] {"0", "item", "1"});
         UserAction[] actions = {
                 new FindByName(out),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + sep + "0. Find by Name" + sep + "1. Exit Program" + sep));
+        assertThat(out.toString(), is("Menu." + sep + "0. Find by Name" + sep
+                + "1. Exit Program" + sep + "Заявка с таким именем не найдены" + sep + "Menu."
+                + sep + "0. Find by Name" + sep + "1. Exit Program" + sep));
     }
     @Test
     public void testFindById() {
         String sep = System.lineSeparator();
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"1", "2"} );
+        Input in = new StubInput(new String[] {"0", "1"} );
         UserAction[] actions = {
                 new FindById(out),
                 new ExitAction()
