@@ -1,12 +1,11 @@
 package ru.job4j.ex;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
-public class FactTest1 extends TestCase {
+public class FactTest1 {
 
     @Test(expected = IllegalArgumentException.class)
     public void testCalc() {
-        new Fact().calc(5);
+        new Fact().calc(-1);
         }
     }
