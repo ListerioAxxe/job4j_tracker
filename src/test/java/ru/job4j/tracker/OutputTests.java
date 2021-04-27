@@ -1,33 +1,34 @@
 package ru.job4j.tracker;
 
-import junit.framework.TestCase;
+
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.iterableWithSize;
 
-public class OutputTests extends TestCase {
+public class OutputTests {
 
     @Test
     public void testShowAll() {
-      String sep = System.lineSeparator();
+    String sep = System.lineSeparator();
     Tracker tracker = new Tracker();
     Output out = new StubOutput();
-    Input in = new StubInput(new String[] {"1", "2"} );
+    Input in = new StubInput(new String[] {"0", "1"} );
     UserAction[] actions = {
             new ShowAllItem(out),
-            new ExitAction()
+            new ExitAction(),
     };
+
             new StartUI(out).init(in, tracker, actions);
-    assertThat(out.toString(), is("Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep));
+    assertThat(out.toString(), is("Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep
+                                    + "Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep));
 }
     @Test
     public void testFindByName() {
         String sep = System.lineSeparator();
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"1", "2"} );
+        Input in = new StubInput(new String[] {"1", "2"});
         UserAction[] actions = {
                 new FindByName(out),
                 new ExitAction()
