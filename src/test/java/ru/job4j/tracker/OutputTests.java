@@ -43,12 +43,14 @@ public class OutputTests {
         String sep = System.lineSeparator();
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"0", "1"} );
+        Input in = new StubInput(new String[] {"0", "1", "1"} );
         UserAction[] actions = {
                 new FindById(out),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("Menu." + sep + "0. Find by ID" + sep + "1. Exit Program" + sep));
+        assertThat(out.toString(), is("Menu." + sep + "0. Find by ID" + sep
+                + "1. Exit Program" + sep + "Заявка с таким ID не найдена" + sep + "Menu."
+                + sep + "0. Find by ID" + sep + "1. Exit Program" + sep));
     }
 }
