@@ -12,8 +12,9 @@ public class OutputTests {
     public void testShowAll() {
     String sep = System.lineSeparator();
     Tracker tracker = new Tracker();
+    tracker.add(new Item("debug"));
     Output out = new StubOutput();
-    Input in = new StubInput(new String[] {"0", "1"} );
+    Input in = new StubInput(new String[] {"0", "1"});
     UserAction[] actions = {
             new ShowAllItem(out),
             new ExitAction(),
@@ -21,8 +22,10 @@ public class OutputTests {
 
             new StartUI(out).init(in, tracker, actions);
     assertThat(out.toString(), is("Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep
+                                           + "Item{id=1, name='debug'}" + sep
                                     + "Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep));
-}
+    }
+
     @Test
     public void testFindByName() {
         String sep = System.lineSeparator();
@@ -38,12 +41,13 @@ public class OutputTests {
                 + "1. Exit Program" + sep + "Заявка с таким именем не найдены" + sep + "Menu."
                 + sep + "0. Find by Name" + sep + "1. Exit Program" + sep));
     }
+
     @Test
     public void testFindById() {
         String sep = System.lineSeparator();
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"0", "1", "1"} );
+        Input in = new StubInput(new String[] {"0", "1", "1"});
         UserAction[] actions = {
                 new FindById(out),
                 new ExitAction()
