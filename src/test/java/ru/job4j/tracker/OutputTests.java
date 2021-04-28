@@ -12,7 +12,8 @@ public class OutputTests {
     public void testShowAll() {
     String sep = System.lineSeparator();
     Tracker tracker = new Tracker();
-    tracker.add(new Item("debug"));
+    Item debg = new Item("debug");
+    tracker.add(debg);
     Output out = new StubOutput();
     Input in = new StubInput(new String[] {"0", "1"});
     UserAction[] actions = {
@@ -22,7 +23,7 @@ public class OutputTests {
 
             new StartUI(out).init(in, tracker, actions);
     assertThat(out.toString(), is("Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep
-                                           + "Item{id=1, name='debug'}" + sep
+                                           + debg + sep
                                     + "Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep));
     }
 
