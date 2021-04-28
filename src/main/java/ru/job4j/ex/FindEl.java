@@ -4,23 +4,20 @@ public class FindEl {
 
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
         int rsl = -1;
-        int count = 0;
-        for (String s : value) {
-            if (s.equals(key)) {
-                rsl = count;
-                break;
+        for (int i = 0; i < value.length; i++) {
+            if (key.equals(value[i])) {
+                rsl = i;
             }
-            count++;
         }
         if (rsl == -1) {
-            throw new ElementNotFoundException("Not found");
+            throw new ElementNotFoundException("Not found el");
         }
         return rsl;
     }
 
     public static void main(String[] args) throws  ElementNotFoundException {
         try {
-            indexOf(new String[]{"1", "2", "3"}, "4");
+            indexOf(new String[]{"1", "2", "3"}, "3");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
