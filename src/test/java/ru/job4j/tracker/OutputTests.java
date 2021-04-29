@@ -70,13 +70,13 @@ public class OutputTests {
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        String sep = System.lineSeparator();
+        String ln = System.lineSeparator();
         assertThat(out.toString(), is(
-                         "Menu." + sep
-                        + "0. Exit Program" + sep
-                        + "Wrong input, you can select: 0 .. 0" + sep
-                        + "Menu." + sep
-                        + "0. Exit Program" + sep
+                "Menu." + ln
+                        + "0. Exit Program" + ln
+                        + "Wrong input, you can select: 0 .. 0" + ln
+                        + "Menu." + ln
+                        + "0. Exit Program" + ln
                 )
         );
     }
