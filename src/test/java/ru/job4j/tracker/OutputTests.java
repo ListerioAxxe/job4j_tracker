@@ -63,23 +63,20 @@ public class OutputTests {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"8", "1"}
+                new String[] {"8", "0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = new UserAction[]{
-                new CreateAction(out),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
         String sep = System.lineSeparator();
         assertThat(out.toString(), is(
                          "Menu." + sep
-                        + "0. Create" + sep
-                        + "1. Exit Program" + sep
-                        + "Wrong input, you can select: 0 .. 1" + sep
+                        + "0. Exit Program" + sep
+                        + "Wrong input, you can select: 0 .. 0" + sep
                         + "Menu." + sep
-                        + "0. Create" + sep
-                        + "1. Exit Program" + sep
+                        + "0. Exit Program" + sep
                 )
         );
     }
