@@ -11,7 +11,7 @@ public class ValidateTest {
     public void whenInvalidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[] {"1"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
@@ -22,15 +22,16 @@ public class ValidateTest {
     public void whenInvalidInput1() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"1", "2", "3"}
+                new String[] {"2", "3", "4"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
-        assertThat(selected, is(1));
-        selected = input.askInt("Enter menu:");
         assertThat(selected, is(2));
         selected = input.askInt("Enter menu:");
         assertThat(selected, is(3));
+        selected = input.askInt("Enter menu:");
+        assertThat(selected, is(4));
+
     }
 
     @Test
