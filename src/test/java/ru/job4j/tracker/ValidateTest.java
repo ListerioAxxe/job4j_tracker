@@ -11,6 +11,17 @@ public class ValidateTest {
     public void whenInvalidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
+                new String[] {"one", "1"}
+        );
+        ValidateInput input = new ValidateInput(out, in);
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(1));
+    }
+
+    @Test
+    public void whenValidInput() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
                 new String[] {"1"}
         );
         ValidateInput input = new ValidateInput(out, in);
@@ -19,7 +30,7 @@ public class ValidateTest {
     }
 
     @Test
-    public void whenInvalidInput1() {
+    public void whenValidInputs() {
         Output out = new StubOutput();
         Input in = new StubInput(
                 new String[] {"2", "3", "4"}
@@ -35,10 +46,10 @@ public class ValidateTest {
     }
 
     @Test
-    public void whenInvalidInputError() {
+    public void whenFirstInvalidThenValidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"-1", "-2", "1"}
+                new String[] {"-1", "-1", "1"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
