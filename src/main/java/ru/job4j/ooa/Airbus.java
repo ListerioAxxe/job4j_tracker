@@ -8,10 +8,6 @@ public final class Airbus extends Aircraft {
         this.name = name;
     }
 
-    public int getCountEngine() {
-        return COUNT_ENGINE;
-    }
-
     public String getName() {
         return name;
     }
