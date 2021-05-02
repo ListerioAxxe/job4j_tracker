@@ -9,10 +9,18 @@ public class Proffesion {
     private String education;
     private LocalDate birthday;
 
-    public String getName() {return name;}
-    public String getSurname() {return surname;}
-    public String getEducation() {return education;}
-    public LocalDate getBirthday() {return birthday;}
+    public String getName() {
+        return name;
+    }
+    public String getSurname() {
+        return surname;
+    }
+    public String getEducation() {
+        return education;
+    }
+    public LocalDate getBirthday() {
+        return birthday;
+    }
 
     public Proffesion (String name, String surname, String education, LocalDate birthday) {
         this.name = name;

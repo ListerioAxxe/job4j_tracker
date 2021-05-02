@@ -4,9 +4,9 @@ public class StubOutput implements Output {
     private final StringBuilder buffer = new StringBuilder();
 
     @Override
-    public void println(Object obj) {
-        if (obj != null) {
-            buffer.append(obj.toString());
+    public void println(String string) {
+        if (string != null) {
+            buffer.append(string);
         } else {
             buffer.append("null");
         }

@@ -20,5 +20,4 @@ public class Engineer extends Proffesion {
         return rsl;
     }
 
-
 }

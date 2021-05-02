@@ -1,20 +1,13 @@
 package ru.job4j.tracker;
 
 public class EditItem implements  UserAction {
-    private final Output out;
-
-    public EditItem(Output out) {
-        this.out = out;
-    }
-
-
     @Override
     public String name() {
         return "Edit Item";
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Output out) {
         int id = input.askInt("Enter ID");
         String name =  input.askStr("Enter name ");
         Item first = new Item(name);

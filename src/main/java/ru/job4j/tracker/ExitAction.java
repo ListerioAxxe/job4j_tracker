@@ -7,9 +7,8 @@ public class ExitAction implements  UserAction{
         return "Exit Program";
     }
 
-
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Tracker tracker, Output out) {
         return false;
     }
 }
