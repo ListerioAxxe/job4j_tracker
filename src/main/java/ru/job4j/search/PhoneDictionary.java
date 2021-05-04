@@ -21,6 +21,8 @@ public class PhoneDictionary {
             if (person.getName().contains(key) || person.getSurname().contains(key)
                || person.getAddress().contains(key) || person.getPhone().contains(key)) {
                 result.add(person);
+            } else {
+                return null;
             }
         }
         return result;
