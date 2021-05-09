@@ -74,4 +74,24 @@ public class JobCompareByNameTest {
 
         assertThat(list, is(exp));
     }
+
+    @Test
+    public void testCompareDeskByNameThenPr() {
+        List<Job> list = new ArrayList<>();
+        list.add(new Job("andry", 3));
+        list.add(new Job("igor", 5));
+        list.add(new Job("sveta", 7));
+        list.add(new Job("sveta", 9));
+        list.add(new Job("andry", 11));
+        Collections.sort(list, new JobCompareByName().thenComparing(new JobCompareByPriority()));
+
+        List<Job> exp = new ArrayList<>();
+        exp.add(new Job("andry", 3));
+        exp.add(new Job("andry", 11));
+        exp.add(new Job("igor", 5));
+        exp.add(new Job("sveta", 7));
+        exp.add(new Job("sveta", 9));
+
+        assertThat(list, is(exp));
+    }
 }
