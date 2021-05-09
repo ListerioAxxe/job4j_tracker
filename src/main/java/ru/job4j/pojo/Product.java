@@ -29,10 +29,18 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Product product = (Product) o;
-        return count == product.count && name.equals(product.name);
+        return count == product.count && Objects.equals(name, product.name);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, count);
+    }
 }

@@ -9,26 +9,28 @@ public class Proffesion {
     private String education;
     private LocalDate birthday;
 
-    public String getName() {
-        return name;
-    }
-    public String getSurname() {
-        return surname;
-    }
-    public String getEducation() {
-        return education;
-    }
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public Proffesion (String name, String surname, String education, LocalDate birthday) {
+    public Proffesion(String name, String surname, String education, LocalDate birthday) {
         this.name = name;
         this.surname = surname;
         this.education = education;
         this.birthday = birthday;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    @SuppressWarnings("checkstyle:EmptyLineSeparator")
+    public String getSurname() {
+        return surname;
+    }
 
+    @SuppressWarnings("checkstyle:EmptyLineSeparator")
+    public String getEducation() {
+        return education;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
 }

@@ -1,4 +1,4 @@
-package ru.job4j.Compare;
+package ru.job4j.compare;
 
 import ru.job4j.tracker.Item;
 

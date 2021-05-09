@@ -9,7 +9,8 @@ public class Battery {
     }
 
     public void exchange(Battery another) {   // метод обмена зарядом
-        another.load = this.load + another.load;  // в поле сумму зарядов обоих батарей (обращаемся к полю
+        another.load = this.load + another.load;  // в поле
+        // сумму зарядов обоих батарей (обращаемся к полю
         this.load = 0;  // батарея пуста
     }
 
@@ -17,6 +18,6 @@ public class Battery {
         Battery first = new Battery(15);
         Battery second = new Battery(10);
         first.exchange(second);
-        System.out.println("first " + first.load + " second " + second.load );
+        System.out.println("first " + first.load + " second " + second.load);
     }
 }

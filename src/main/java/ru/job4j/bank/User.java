@@ -15,22 +15,19 @@ public class User {
         return passport;
     }
 
-    public void setPassport(String passport) {
-        this.passport = passport;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
+    @SuppressWarnings("checkstyle:EmptyLineSeparator")
     public void setUsername(String username) {
         this.username = username;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
         return Objects.equals(passport, user.passport);
     }

@@ -10,8 +10,7 @@ public class College {
         student.setName("Ivan");
         student.setGroup(28);
         student.setData(new Date());
-        System.out.println(student.getName() +" " + student.getGroup() + " group " + student.getData());
-
-
+        System.out.println(student.getName() + " "
+                + student.getGroup() + " group " + student.getData());
     }
 }

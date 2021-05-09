@@ -30,7 +30,5 @@ public class Error {
         first.output();
         second.output();
         third.output();
-
-
     }
 }
