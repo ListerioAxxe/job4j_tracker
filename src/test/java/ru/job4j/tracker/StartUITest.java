@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
@@ -14,7 +15,7 @@ public class StartUITest {
     public void whenCreateItem() {
         Output output = new ConsoleOutput();
         Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
+                new String[]{"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
         ArrayList<UserAction> actions = new ArrayList<>();
@@ -31,7 +32,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
+                new String[]{"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         ArrayList<UserAction> actions = new ArrayList<>();
         actions.add(new EditItem());
@@ -46,7 +47,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
-                new String[] {"0", Integer.toString(item.getId()), "1"}
+                new String[]{"0", Integer.toString(item.getId()), "1"}
         );
         ArrayList<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteItem());
@@ -59,7 +60,7 @@ public class StartUITest {
     public void whenExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0"}
+                new String[]{"0"}
         );
         Tracker tracker = new Tracker();
         ArrayList<UserAction> actions = new ArrayList<>();
@@ -83,8 +84,8 @@ public class StartUITest {
         actions.add(new ExitAction());
         new StartUI(out, in, tracker, actions);
         assertThat(out.toString(), is("Menu." + System.lineSeparator()
-                                      + "0. Show all items" + System.lineSeparator() + "1. Exit Program" + System.lineSeparator()
-                                      + item + System.lineSeparator() + "Menu." + System.lineSeparator()
+                + "0. Show all items" + System.lineSeparator() + "1. Exit Program" + System.lineSeparator()
+                + item + System.lineSeparator() + "Menu." + System.lineSeparator()
                 + "0. Show all items" + System.lineSeparator() + "1. Exit Program" + System.lineSeparator()));
     }
 
@@ -117,7 +118,7 @@ public class StartUITest {
                         "Menu.%n"
                                 + "0. Find by Name%n"
                                 + "1. Exit Program%n"
-                                + tracker.findById(item.getId()) + System.lineSeparator()
+                                + item + System.lineSeparator()
                                 + "Menu.%n"
                                 + "0. Find by Name%n"
                                 + "1. Exit Program%n")));
