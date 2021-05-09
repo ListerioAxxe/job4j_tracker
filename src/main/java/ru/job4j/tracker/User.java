@@ -3,7 +3,7 @@ package ru.job4j.tracker;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class User implements Comparable<User>{
+public class User implements Comparable<User> {
     private int id;
 
     private String username;
@@ -57,11 +57,12 @@ public class User implements Comparable<User>{
 
     @Override
     public int compareTo(User o) {
-       if (this.getUsername().equals(o.getUsername())) {
-           return this.getId() - o.getId();
-       } else {
-           return this.getUsername().compareTo(o.getUsername());
+       int rsl =  this.getUsername().compareTo(o.getUsername());
+       if (rsl == 0) {
+           return Integer.compare(this.getId(), o.getId());
        }
+       return rsl;
 
+      // или так return  Comparator.comparing(User::getUsername).thenComparing(User::getId).compare(this, o);
     }
 }
