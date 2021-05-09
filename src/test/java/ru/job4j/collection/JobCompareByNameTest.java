@@ -91,7 +91,6 @@ public class JobCompareByNameTest {
         exp.add(new Job("igor", 5));
         exp.add(new Job("sveta", 7));
         exp.add(new Job("sveta", 9));
-
         assertThat(list, is(exp));
     }
 }
