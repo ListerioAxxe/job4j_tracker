@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tracker {
-    private final List<Item> items = new ArrayList();
+    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
 
     public Item add(Item item) {
@@ -56,10 +56,9 @@ public class Tracker {
     public boolean delete(int id) {
        int itemDelete = indexOf(id);
             if (itemDelete != -1) {
-                items.remove(id);
+                items.remove(itemDelete);
                 return true;
             }
         return false;
     }
-
 }

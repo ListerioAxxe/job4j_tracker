@@ -1,6 +1,5 @@
 package ru.job4j.Compare;
 
-import ru.job4j.list.Arr;
 import ru.job4j.tracker.Item;
 
 import java.util.*;
@@ -19,13 +18,13 @@ public class CompareSort {
         Collections.sort(items);
         System.out.println(items);
         System.out.println("После сортировки по Айди обратный порядок");
-        Collections.sort(items, new CompareIdReverse());
+        Collections.sort(items, new CompareIdRevers());
         System.out.println(items);
         System.out.println("После сортировки по Нейму");
         Collections.sort(items, new CompareToName());
         System.out.println(items);
         System.out.println("После сортировки по Нейму обратный порядок");
-        Collections.sort(items, new CompareNameReverse());
+        Collections.sort(items, new CompareNameRevers());
         System.out.println(items);
     }
 }

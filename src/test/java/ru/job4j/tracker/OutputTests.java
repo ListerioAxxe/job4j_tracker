@@ -3,6 +3,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -16,10 +18,9 @@ public class OutputTests {
     tracker.add(debg);
     Output out = new StubOutput();
     Input in = new StubInput(new String[] {"0", "1"});
-    UserAction[] actions = {
-            new ShowAllItem(),
-            new ExitAction(),
-    };
+        ArrayList<UserAction> actions = new ArrayList<>();
+        actions.add(new ShowAllItem());
+        actions.add(new ExitAction());
 
             new StartUI(out, in, tracker, actions);
     assertThat(out.toString(), is("Menu." + sep + "0. Show all items" + sep + "1. Exit Program" + sep
@@ -33,10 +34,9 @@ public class OutputTests {
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
         Input in = new StubInput(new String[] {"0", "item", "1"});
-        UserAction[] actions = {
-                new FindByName(),
-                new ExitAction()
-        };
+        ArrayList<UserAction> actions = new ArrayList<>();
+        actions.add(new FindByName());
+        actions.add(new ExitAction());
         new StartUI(out, in, tracker, actions);
         assertThat(out.toString(), is("Menu." + sep + "0. Find by Name" + sep
                 + "1. Exit Program" + sep + "Заявка с таким именем не найдены" + sep + "Menu."
@@ -48,11 +48,10 @@ public class OutputTests {
         String sep = System.lineSeparator();
         Tracker tracker = new Tracker();
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"0", "1", "1"});
-        UserAction[] actions = {
-                new FindById(),
-                new ExitAction()
-        };
+        Input in = new StubInput(new String[] {"0", "2", "1"});
+        ArrayList<UserAction> actions = new ArrayList<>();
+        actions.add(new FindById());
+        actions.add(new ExitAction());
         new StartUI(out, in, tracker, actions);
         assertThat(out.toString(), is("Menu." + sep + "0. Find by ID" + sep
                 + "1. Exit Program" + sep + "Заявка с таким ID не найдена" + sep + "Menu."
@@ -66,9 +65,8 @@ public class OutputTests {
                 new String[] {"8", "0"}
         );
         Tracker tracker = new Tracker();
-        UserAction[] actions = new UserAction[]{
-                new ExitAction()
-        };
+        ArrayList<UserAction> actions = new ArrayList<>();
+        actions.add(new ExitAction());
         new StartUI(out, in, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(

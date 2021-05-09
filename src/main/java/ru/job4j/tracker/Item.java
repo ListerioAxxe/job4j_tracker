@@ -8,40 +8,53 @@ public class Item implements Comparable<Item> {
     private String name;
 
     public Item() { }
+
     public Item(String name) {
         this.name = name;
     }
+
+    public Item(int id) {
+        this.id = id;
+    }
+
     public Item(String name, int id) {
         this.name = name;
         this.id = id;
     }
 
+    @SuppressWarnings("checkstyle:OperatorWrap")
     @Override
     public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Item{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + '}';
     }
 
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Item item = (Item) o;
         return id == item.id && Objects.equals(name, item.name);
     }
