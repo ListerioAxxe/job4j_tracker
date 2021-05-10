@@ -33,8 +33,10 @@ public class DepartmentsTest {
 
     @Test
     public void testSortDesc() {
-        List<String> input = Arrays.asList("k1", "k1/sk1", "k1/sk2");
-        List<String> expect = Arrays.asList("k1/sk2", "k1/sk1", "k1");
+        List<String> input = Arrays.asList("K1", "K1/SK1", "K1/SK1/SSK1",
+                "K1/SK1/SSK2", "K1/SK2", "K2", "K2/SK1", "K2/SK1/SSK1", "K2/SK1/SSK2");
+        List<String> expect = Arrays.asList("K2", "K2/SK1", "K2/SK1/SSK1", "K2/SK1/SSK2", "K1",
+                "K1/SK1", "K1/SK1/SSK1", "K1/SK1/SSK2", "K1/SK2");
         List<String> result = Departments.sortDesc(input);
         assertThat(result, is(expect));
     }
