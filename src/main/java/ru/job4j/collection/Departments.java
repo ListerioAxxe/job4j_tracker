@@ -36,17 +36,15 @@ public class Departments {
      * сортируем список (сортируем по возрастанию встроенным методом)
      * @param orgs сортируемый список
      */
-    public static List<String> sortAsc(List<String> orgs) {
+    public static void sortAsc(List<String> orgs) {
         orgs.sort(Comparator.naturalOrder());
-        return orgs;
     }
 
     /**
      * cортируем список  убыванию, компаратор написали
      * @param orgs сортируемый список
      */
-    public static List<String> sortDesc(List<String> orgs) {
+    public static void sortDesc(List<String> orgs) {
         orgs.sort(new DepDescComp());
-        return orgs;
     }
 }

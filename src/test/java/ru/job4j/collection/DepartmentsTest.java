@@ -3,7 +3,9 @@ package ru.job4j.collection;
 import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
-import static org.hamcrest.Matchers.is;
+
+import static java.lang.CharSequence.compare;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class DepartmentsTest {
@@ -25,19 +27,19 @@ public class DepartmentsTest {
 
     @Test
     public void testSortAsc() {
-        List<String> input = Arrays.asList("k2", "k1/sk1", "k1/sk2");
-        List<String> expect = Arrays.asList("k1/sk1", "k1/sk2", "k2");
-        List<String> result = Departments.sortAsc(input);
-        assertThat(result, is(expect));
+        int rsl = compare(
+                "dep1",
+                "dep1/subdep"
+        );
+        assertThat(rsl, lessThan(0));
     }
 
     @Test
     public void testSortDesc() {
-        List<String> input = Arrays.asList("K1", "K1/SK1", "K1/SK1/SSK1",
-                "K1/SK1/SSK2", "K1/SK2", "K2", "K2/SK1", "K2/SK1/SSK1", "K2/SK1/SSK2");
-        List<String> expect = Arrays.asList("K2", "K2/SK1", "K2/SK1/SSK1", "K2/SK1/SSK2", "K1",
-                "K1/SK1", "K1/SK1/SSK1", "K1/SK1/SSK2", "K1/SK2");
-        List<String> result = Departments.sortDesc(input);
-        assertThat(result, is(expect));
+        int rsl = new DepDescComp().compare(
+                "dep1",
+                "dep1/subdep"
+        );
+        assertThat(rsl, lessThan(0));
     }
 }
