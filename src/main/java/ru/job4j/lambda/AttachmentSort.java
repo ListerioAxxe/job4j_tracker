@@ -4,13 +4,20 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class AttachmentSort {
+ @SuppressWarnings("checkstyle:EmptyLineSeparator")
+ public class AttachmentSort {
+
     public static void main(String[] args) {
         List<Attachment> attachments = Arrays.asList(
                 new Attachment("image 1", 100),
                 new Attachment("image 2", 34),
                 new Attachment("image 3", 13)
         );
+        /**
+          создание анонимного класса для сравнения обьектов
+          приводим обьект к типу Attachment
+          возвращаем результат сравненеия
+         */
         Comparator comparator =  new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
@@ -21,6 +28,12 @@ public class AttachmentSort {
         };
         attachments.sort(comparator);
         System.out.println(attachments);
+
+        /**
+         * создание анонимного класса для сравнения обьектов
+         * приводим обьект к типу Attachment
+         * возвращаем результат сравненеия
+         */
         Comparator comparator1 = new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
