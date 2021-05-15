@@ -27,4 +27,33 @@ public class PhoneDictionaryTest {
         ArrayList<Person> persons = phones.find("Igor");
         assertThat(persons.size(), is(0));
     }
+
+    @Test
+    public void whenFindBySurname() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Evgen", "Kadenko", "534872", "Msk")
+        );
+        ArrayList<Person> persons = phones.find("Kadenko");
+        assertThat(persons.size(), is(1));
+    }
+
+    @Test
+    public void whenFindByPhone() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Evgen", "Kadenko", "534872", "Msk")
+        );
+        ArrayList<Person> persons = phones.find("34872");
+        assertThat(persons.size(), is(1));
+    }
+
+    @Test
+    public void whenFindByAdres() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(new Person("Evgen", "Kadenko", "534872", "Msk"));
+        phones.add(new Person("Evgen", "Ivanovich", "35673", "Saratov"));
+        ArrayList<Person> persons = phones.find("Saratov");
+        assertThat(persons.size(), is(1));
+    }
 }
