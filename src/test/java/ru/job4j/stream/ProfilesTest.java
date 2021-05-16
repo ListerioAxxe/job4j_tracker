@@ -16,8 +16,8 @@ public class ProfilesTest {
     public void whenDifferentAddresses() {
         Profiles func = new Profiles();
         List<Address> expect = List.of(
-                new Address("Moscow", "Biruz", 55, 3),
                 new Address("Kerch", "Vorosh", 30, 3),
+                new Address("Moscow", "Biruz", 55, 3),
                 new Address("Saratov", "Koroleva", 11, 1)
         );
         List<Profile> input = expect.stream()
