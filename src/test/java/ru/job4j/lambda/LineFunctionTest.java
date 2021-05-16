@@ -26,8 +26,8 @@ public class LineFunctionTest {
 
     @Test
     public void whenSqrtFunctionThenSqrtResults() {
-        List<Double> result = LineFunction.diapason(9, 10, x ->  Math.sqrt(x) + 5.5);
-        List<Double> expected = Arrays.asList(8.5);
+        List<Double> result = LineFunction.diapason(1, 2, x ->  Math.pow(2, x) + 5.5);
+        List<Double> expected = Arrays.asList(7.5);
         assertThat(result, is(expected));
     }
 
