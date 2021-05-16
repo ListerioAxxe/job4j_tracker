@@ -33,6 +33,7 @@ public class ProfilesTest {
         List<Address> list = List.of(
                 new Address("Moscow", "Biruz", 30, 3),
                 new Address("Kerch", "Vorosh", 30, 3),
+                new Address("Saratov", "Koroleva", 12, 1),
                 new Address("Saratov", "Koroleva", 12, 1)
 
         );
@@ -40,8 +41,8 @@ public class ProfilesTest {
                 .map(Profile::new)
                 .collect(Collectors.toList());
         List<Address> expect = List.of(
-                new Address("Moscow", "Biruz", 30, 3),
                 new Address("Kerch", "Vorosh", 30, 3),
+                new Address("Moscow", "Biruz", 30, 3),
                 new Address("Saratov", "Koroleva", 12, 1)
 
         );
