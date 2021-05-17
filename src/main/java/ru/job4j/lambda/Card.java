@@ -19,10 +19,18 @@ public class Card {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "Card{"
+                + "suit=" + suit
+                + ", value=" + value
+                + '}';
+    }
+
     public static void main(String[] args) {
         Stream.of(Suit.values())
-                .flatMap(value -> Stream.of(Value.values())
-                        .map(card -> new Card(suit, value)))
+                .flatMap(suit -> Stream.of(Value.values())
+                .map(value -> new Card(suit, value)))
                 .forEach(System.out::println);
     }
 }
