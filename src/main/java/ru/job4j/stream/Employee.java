@@ -8,7 +8,6 @@ public class Employee {
     private String education;
     private boolean assist;
 
-    @SuppressWarnings("checkstyle:EmptyLineSeparator")
     static class Builder {
         private String specialization;
         private String grade;
