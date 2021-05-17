@@ -16,6 +16,6 @@ public class School {
 
     public static Map<String, Student> convert(List<Student> students) {
         return students.stream()
-                .collect(Collectors.toMap(Student::getSurname, student -> student, (x, y) -> x.equals(y) ? x : y));
+                .collect(Collectors.toMap(Student::getSurname, student -> student, (x, y) -> x));
     }
 }
