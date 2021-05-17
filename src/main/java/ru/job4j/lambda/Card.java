@@ -20,11 +20,9 @@ public class Card {
     }
 
     public static void main(String[] args) {
-        String[] cards = {"Diamonds", "Hearts", "Spades", "Clubs"};
-        String[] values = {"V_6", "V_7", "V_8"};
-        Stream.of(cards)
-                .flatMap(level -> Stream.of(values)
-                        .map(card -> level + " " + card))
+        Stream.of(Suit.values())
+                .flatMap(value -> Stream.of(Value.values())
+                        .map(suit ->  suit + " " + value))
                 .forEach(System.out::println);
     }
 }
