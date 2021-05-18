@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.is;
 public class JobCompareByNameTest {
       @Test
     public void testCompareByName() {
-        List<Job> list= new ArrayList<>();
+        List<Job> list = new ArrayList<>();
         list.add(new Job("sveta", 5));
         list.add(new Job("igor", 6));
         list.add(new Job("andry", 7));
