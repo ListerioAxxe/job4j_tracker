@@ -7,7 +7,7 @@ public class Validator {
             if (el == value) {
                 count++;
             }
-            if (count >= data.length/2) {
+            if (count >= data.length / 2) {
                 return false;
             }
         }
