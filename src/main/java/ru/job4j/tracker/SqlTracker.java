@@ -11,6 +11,13 @@ public class SqlTracker implements Store {
     private int ids = 1;
     private Connection cn;
 
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
+    public SqlTracker() {
+    }
+
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader()
                 .getResourceAsStream("app.properties")) {
