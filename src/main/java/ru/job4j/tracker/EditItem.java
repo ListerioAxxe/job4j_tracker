@@ -7,7 +7,7 @@ public class EditItem implements  UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Output out) {
+    public boolean execute(Input input, Store tracker, Output out) {
         int id = input.askInt("Enter ID");
         String name =  input.askStr("Enter name ");
         Item first = new Item(name);
