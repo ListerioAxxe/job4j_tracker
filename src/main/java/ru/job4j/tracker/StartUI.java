@@ -40,8 +40,7 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        var tracker = new SqlTracker() {
-        };
+        var tracker = new SqlTracker();
         ArrayList<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction());
         actions.add(new ShowAllItem());
