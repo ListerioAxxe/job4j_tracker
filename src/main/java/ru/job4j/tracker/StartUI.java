@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class StartUI {
     private final Output out;
     private final Input input;
-    private final Tracker tracker;
+    private final Store tracker;
     private final ArrayList<UserAction> actions;
 
-    public StartUI(Output out, Input input, Tracker tracker, ArrayList<UserAction> actions) {
+    public StartUI(Output out, Input input, Store tracker, ArrayList<UserAction> actions) {
         this.out = out;
         this.input = input;
         this.tracker = tracker;
@@ -40,7 +40,8 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
+        var tracker = new SqlTracker() {
+        };
         ArrayList<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction());
         actions.add(new ShowAllItem());
