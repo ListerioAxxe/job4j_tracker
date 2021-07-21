@@ -13,7 +13,7 @@ public class OutputTests {
     @Test
     public void testShowAll() {
     String sep = System.lineSeparator();
-    Tracker tracker = new Tracker();
+    MemTracker tracker = new MemTracker();
     Item debg = new Item("debug");
     tracker.add(debg);
     Output out = new StubOutput();
@@ -31,7 +31,7 @@ public class OutputTests {
     @Test
     public void testFindByName() {
         String sep = System.lineSeparator();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Output out = new StubOutput();
         Input in = new StubInput(new String[] {"0", "item", "1"});
         ArrayList<UserAction> actions = new ArrayList<>();
@@ -46,7 +46,7 @@ public class OutputTests {
     @Test
     public void testFindById() {
         String sep = System.lineSeparator();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Output out = new StubOutput();
         Input in = new StubInput(new String[] {"0", "2", "1"});
         ArrayList<UserAction> actions = new ArrayList<>();
@@ -64,7 +64,7 @@ public class OutputTests {
         Input in = new StubInput(
                 new String[] {"8", "0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         ArrayList<UserAction> actions = new ArrayList<>();
         actions.add(new ExitAction());
         new StartUI(out, in, tracker, actions);

@@ -1,9 +1,13 @@
 package ru.job4j.tracker;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.Objects;
 
 public class Item implements Comparable<Item> {
+
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
     private int id;
     private String name;
 
@@ -27,7 +31,6 @@ public class Item implements Comparable<Item> {
         this.id = id;
     }
 
-    @SuppressWarnings("checkstyle:OperatorWrap")
     @Override
     public String toString() {
         return "Item{"
