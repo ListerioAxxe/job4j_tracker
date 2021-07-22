@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class SqlTracker implements Store {
-    private final List<Item> items = new ArrayList<>();
-    private int ids = 1;
+
     private Connection cn;
 
     public SqlTracker(Connection cn) {
