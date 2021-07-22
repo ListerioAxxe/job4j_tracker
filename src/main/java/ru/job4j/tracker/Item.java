@@ -6,9 +6,9 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Item implements Comparable<Item> {
-    private final LocalDateTime created = LocalDateTime.now();
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    private final LocalDateTime created = LocalDateTime.now();
     private int id;
     private String name;
 
