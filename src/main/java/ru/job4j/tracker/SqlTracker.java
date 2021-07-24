@@ -64,12 +64,12 @@ public class SqlTracker implements Store {
     @Override
     public boolean replace(int id, Item item) {
          boolean rsl = false;
-        var sql = "update items set name = ?, where id = ?, created = ?";
+        var sql = "update items set name = ?, created = ? where id = ?";
          try (var statement = cn.prepareStatement(sql)) {
              Timestamp timestamp = Timestamp.valueOf(item.getCreated());
              statement.setString(1, item.getName());
-             statement.setInt(2, id);
-             statement.setTimestamp(3, timestamp);
+             statement.setTimestamp(2, timestamp);
+             statement.setInt(3, id);
              rsl = statement.executeUpdate() > 0;
          } catch (SQLException e) {
              e.printStackTrace();
