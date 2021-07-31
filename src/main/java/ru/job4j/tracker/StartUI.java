@@ -22,11 +22,11 @@ public class StartUI {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             if (select < 0 || select >= actions.size()) {
-                    out.println("Wrong input, you can select: 0 .. " + (actions.size() - 1));
-                    continue;
+                out.println("Wrong input, you can select: 0 .. " + (actions.size() - 1));
+                continue;
             }
-                UserAction action = actions.get(select);
-                run = action.execute(input, tracker, out);
+            UserAction action = actions.get(select);
+            run = action.execute(input, tracker, out);
         }
     }
 
@@ -37,18 +37,21 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        var tracker = new SqlTracker();
-        ArrayList<UserAction> actions = new ArrayList<>();
-        actions.add(new CreateAction());
-        actions.add(new ShowAllItem());
-        actions.add(new EditItem());
-        actions.add(new DeleteItem());
-        actions.add(new FindById());
-        actions.add(new FindByName());
-        actions.add(new ExitAction());
-        new StartUI(output, input, tracker, actions);
+        try (Store tracker = new MemTracker()) {
+            tracker.init();
+            ArrayList<UserAction> actions = new ArrayList<>();
+            actions.add(new CreateAction());
+            actions.add(new ShowAllItem());
+            actions.add(new EditItem());
+            actions.add(new DeleteItem());
+            actions.add(new FindById());
+            actions.add(new FindByName());
+            actions.add(new ExitAction());
+            actions.add(new GCTestAction(output));
+            new StartUI(output, input, tracker, actions);
+        }
     }
 }
