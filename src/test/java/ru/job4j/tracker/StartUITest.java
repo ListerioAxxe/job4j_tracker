@@ -1,12 +1,17 @@
 package ru.job4j.tracker;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class StartUITest {
 
@@ -121,5 +126,57 @@ public class StartUITest {
                                 + "Menu.%n"
                                 + "0. Find by Name%n"
                                 + "1. Exit Program%n")));
+    }
+
+    @Test
+    public void executeEditAction() {
+        Output out = new StubOutput();
+        MemTracker tracker = new MemTracker();
+        tracker.add(new Item("Replaced item"));
+        String replacedName = "New item name";
+        EditItem rep = new EditItem();
+        Input input = mock(Input.class);
+        when(input.askInt(any(String.class))).thenReturn(1);
+        when(input.askStr(any(String.class))).thenReturn(replacedName);
+        rep.execute(input, tracker, out);
+        MatcherAssert.assertThat(out.toString(), is("Successful\r\n"));
+        MatcherAssert.assertThat(tracker.findAll().get(0).getName(), is(replacedName));
+    }
+
+    @Test
+    public void executeDeleteAction() {
+        Output out = new StubOutput();
+        MemTracker tracker = new MemTracker();
+        tracker.add(new Item("Item"));
+        DeleteItem delete = new DeleteItem();
+        Input input = mock(Input.class);
+        when(input.askInt(any(String.class))).thenReturn(1);
+        delete.execute(input, tracker, out);
+        MatcherAssert.assertThat(out.toString(), is("Successful\r\n"));
+        assertEquals(0, tracker.findAll().size());
+    }
+
+    @Test
+    public void executeFindByIdAction() {
+        Output out = new StubOutput();
+        MemTracker tracker = new MemTracker();
+        FindById find = new FindById();
+        Input input = mock(Input.class);
+        when(input.askInt(any(String.class))).thenReturn(1);
+        find.execute(input, tracker, out);
+        MatcherAssert.assertThat(out.toString(), is("Заявка с таким ID не найдена\r\n"));
+        assertNull(tracker.findById(0));
+    }
+
+    @Test
+    public void executeFindByNameAction() {
+        Output out = new StubOutput();
+        MemTracker tracker = new MemTracker();
+        FindByName findByName = new FindByName();
+        Input input = mock(Input.class);
+        when(input.askStr(any(String.class))).thenReturn("Item");
+        findByName.execute(input, tracker, out);
+        MatcherAssert.assertThat(out.toString(), is("Заявка с таким именем не найдены\r\n"));
+        assertEquals(tracker.findByName("Item"), Collections.emptyList());
     }
 }
