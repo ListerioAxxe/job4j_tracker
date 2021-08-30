@@ -43,12 +43,10 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        String sql = "Insert into items(name, created) values(?, ?)";
+        String sql = "Insert into items(name) values(?)";
         try (var statement = cn.prepareStatement(sql, Statement
                 .RETURN_GENERATED_KEYS)) {
-            Timestamp timestamp = Timestamp.valueOf(item.getCreated());
             statement.setString(1, item.getName());
-            statement.setTimestamp(2, timestamp);
             statement.execute();
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -64,12 +62,10 @@ public class SqlTracker implements Store {
     @Override
     public boolean replace(int id, Item item) {
          boolean rsl = false;
-        var sql = "update items set name = ?, created = ? where id = ?";
+        var sql = "update items set name = ? where id = ?";
          try (var statement = cn.prepareStatement(sql)) {
-             Timestamp timestamp = Timestamp.valueOf(item.getCreated());
              statement.setString(1, item.getName());
-             statement.setTimestamp(2, timestamp);
-             statement.setInt(3, id);
+             statement.setInt(2, id);
              rsl = statement.executeUpdate() > 0;
          } catch (SQLException e) {
              e.printStackTrace();
@@ -97,11 +93,9 @@ public class SqlTracker implements Store {
          try (var statement = cn.prepareStatement(sql)) {
              try (var resultSet = statement.executeQuery()) {
                  while (resultSet.next()) {
-                     LocalDateTime localDateTime = resultSet.getTimestamp(3).toLocalDateTime();
                      rsl.add(new Item(
                              resultSet.getInt("id"),
-                             resultSet.getString("name"),
-                             localDateTime
+                             resultSet.getString("name")
                      ));
                  }
              }
@@ -119,11 +113,9 @@ public class SqlTracker implements Store {
            statement.setString(1, key);
            try (var rslKey = statement.executeQuery()) {
                while (rslKey.next()) {
-                   LocalDateTime localDateTime = rslKey.getTimestamp(3).toLocalDateTime();
                    rsl.add(new Item(
                            rslKey.getInt("id"),
-                           rslKey.getString("name"),
-                           localDateTime
+                           rslKey.getString("name")
                    ));
                }
            }
@@ -144,8 +136,7 @@ public class SqlTracker implements Store {
                      LocalDateTime localDateTime = rslKey.getTimestamp(3).toLocalDateTime();
                     item = new Item(
                             rslKey.getInt("id"),
-                            rslKey.getString("name"),
-                            localDateTime
+                            rslKey.getString("name")
                     );
                  }
              }

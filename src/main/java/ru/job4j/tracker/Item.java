@@ -4,11 +4,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.Objects;
+import javax.persistence.*;
+import java.util.Objects;
 
-public class Item implements Comparable<Item> {
-    private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-    private LocalDateTime created = LocalDateTime.now();
+@Entity
+@Table(name = "items")
+public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
@@ -32,12 +35,6 @@ public class Item implements Comparable<Item> {
         this.id = id;
     }
 
-    public Item(int id, String name, LocalDateTime created) {
-        this.name = name;
-        this.id = id;
-        this.created = created;
-    }
-
     @Override
     public String toString() {
         return "Item{"
@@ -56,10 +53,6 @@ public class Item implements Comparable<Item> {
 
     public String getName() {
         return name;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
     }
 
     public void setName(String name) {
@@ -81,11 +74,6 @@ public class Item implements Comparable<Item> {
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
-    }
-
-    @Override
-    public int compareTo(Item another) {
-        return this.getId() - another.getId();
     }
 
 }

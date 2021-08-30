@@ -14,15 +14,10 @@ public class GCTestAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Store tracker, Output out) {
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 500000; i++) {
             Item item = new Item("test" + i);
             tracker.add(item);
             System.out.println(i);
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
         return true;
     }

@@ -12,19 +12,5 @@ public class CompareSort {
                 new Item("boris", 3),
                 new Item("zevs", 4)
         );
-        System.out.println("Изначальный лист");
-        System.out.println(items);
-        System.out.println("После сортировки по Айди");
-        Collections.sort(items);
-        System.out.println(items);
-        System.out.println("После сортировки по Айди обратный порядок");
-        Collections.sort(items, new CompareIdRevers());
-        System.out.println(items);
-        System.out.println("После сортировки по Нейму");
-        Collections.sort(items, new CompareToName());
-        System.out.println(items);
-        System.out.println("После сортировки по Нейму обратный порядок");
-        Collections.sort(items, new CompareNameRevers());
-        System.out.println(items);
     }
 }
