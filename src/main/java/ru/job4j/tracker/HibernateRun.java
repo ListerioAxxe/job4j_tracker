@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.sql.Timestamp;
 import java.util.List;
 
 public class HibernateRun {
@@ -13,6 +15,14 @@ public class HibernateRun {
                 .configure().build();
         try {
             SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            Session session = sf.openSession();
+            session.beginTransaction();
+            Item item1 = new Item("First item", "First created", new Timestamp(1459510232000L));
+            Item item2 = new Item("Sec item", "Sec created", new Timestamp(1459510232000L));
+            session.save(item1);
+            session.save(item2);
+            session.getTransaction().commit();
+            session.close();
             Item item = create(new Item("Learn Hibernate"), sf);
             System.out.println(item);
             item.setName("Learn Hibernate 5.");
